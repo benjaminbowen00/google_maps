@@ -58,7 +58,8 @@ MapWrapper.prototype.bounceMarkers = function(){
 
 
 MapWrapper.prototype.recentreMapChicago = function(){
-  var latLng = new google.maps.LatLng(41.87, -87.63);
+  // var latLng = new google.maps.LatLng(41.87, -87.63);
+    latLng = {lat:41.87, lng:-87.63};
   console.log(latLng);
     this.googleMap.setCenter(latLng);
 }
@@ -68,9 +69,11 @@ MapWrapper.prototype.recentreOnWhereIAm = function(){
   navigator.geolocation.getCurrentPosition(function (position) {
     let lat = position.coords.latitude;
     let long = position.coords.longitude;
-    myLocation = new google.maps.LatLng(lat, long);
+    // myLocation = new google.maps.LatLng(lat, long);
+    myLocation = {lat:lat, lng:long};
     console.log(myLocation);
     this.googleMap.setCenter(myLocation);
+    this.googleMap.setZoom(15);
 
     myCoords = {lat: lat, lng: long};
     this.addMarker(myCoords);
